@@ -3,14 +3,16 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const personRoutes = require('./routes/personRoutes');
 const contactRoutes = require('./routes/contactRoutes');
+const cors = require('cors');
 
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 mongoose.connect(process.env.MONGODB_URI, {})
     .then(() => console.log('Conectado ao MongoDB'))
