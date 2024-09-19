@@ -5,10 +5,6 @@ class ContactService {
         return await contactRepository.create(contact);
     }
 
-    async getAll() {
-        return await contactRepository.findAll();
-    }
-
     async getById(id) {
         return await contactRepository.findById(id);
     }
@@ -21,8 +17,8 @@ class ContactService {
         return await contactRepository.delete(id);
     }
 
-    async getByPerson(personId) {
-        return await contactRepository.findByPerson(personId);
+    async getByPersonId(personId) {
+        return await contactRepository.findByPersonId(personId);
     }
 }
 

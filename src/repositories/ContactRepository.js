@@ -17,11 +17,7 @@ class ContactRepository {
         return await Contact.findByIdAndDelete(id);
     }
 
-    async findAll() {
-        return await Contact.find().populate('person');
-    }
-
-    async findByPerson(personId) {
+    async findByPersonId({personId}) {
         return await Contact.find({ person: personId });
     }
 }

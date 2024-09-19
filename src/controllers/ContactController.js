@@ -10,15 +10,6 @@ class ContactController {
         }
     }
 
-    async getAll(req, res) {
-        try {
-            const contacts = await contactService.getAll();
-            res.json(contacts);
-        } catch (error) {
-            res.status(500).json({ error: error.message });
-        }
-    }
-
     async getById(req, res) {
         try {
             const contact = await contactService.getById(req.params.id);
@@ -50,6 +41,15 @@ class ContactController {
                 return res.status(404).json({ error: 'Contact not found' });
             }
             res.status(204).send();
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
+    async getAllByPersonId(req, res) {
+        try {
+            const contacts = await contactService.getByPersonId(req.query);
+            res.json(contacts);
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
